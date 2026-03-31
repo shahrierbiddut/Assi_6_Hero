@@ -1,0 +1,154 @@
+[{
+        "id": 1,
+        "name": "AI Writing Pro",
+        "description": "Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.",
+        "price": "$29",
+        "period": "mo",
+        "tag": "Best Seller",
+        "tagType": "best seller",
+        "btnType": "Buy Now",
+        "features": [
+            "Unlimited AI generations",
+            "50+ writing templates",
+            "Grammar checker"
+        ],
+        "icon": "PenTool",
+        "image": "https://img.freepik.com/premium-vector/artificial-intelligence-prompt-writing-icon_1076610-72353.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Design Templates Pack",
+        "description": "2000+ premium templates for social media, presentations, and marketing materials.",
+        "price": "$49",
+        "period": "one-time",
+        "tag": "Popular",
+        "tagType": "popular",
+        "btnType": "Buy Now",
+        "features": [
+            "2000+ templates",
+            "Monthly updates",
+            "Commercial license"
+        ],
+        "icon": "Palette",
+        "image": "https://img.freepik.com/free-vector/colorful-letter-gradient-logo-design_474888-2309.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Premium Stock Assets",
+        "description": "Access millions of royalty-free photos, videos, and graphics for your projects.",
+        "price": "$19",
+        "period": "mo",
+        "tag": "New",
+        "tagType": "new",
+        "btnType": "Buy Now",
+        "features": [
+            "10M+ assets",
+            "Commercial use",
+            "No attribution"
+        ],
+        "icon": "Camera",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz6bHUsIHu0tcjvrPm8wvtP8f9LkEGJ7AAyQ&s"
+    },
+    {
+        "id": 4,
+        "name": "Automation Toolkit",
+        "description": "Automate repetitive tasks and streamline your workflow with powerful tools.",
+        "price": "$79",
+        "period": "mo",
+        "tag": "Popular",
+        "tagType": "popular",
+        "btnType": "Buy Now",
+        "features": [
+            "50+ automations",
+            "API access",
+            "Custom workflows"
+        ],
+        "icon": "Settings",
+        "image": "https://cdn-icons-png.flaticon.com/512/10435/10435141.png"
+    },
+    {
+        "id": 5,
+        "name": "Resume Builder Pro",
+        "description": "Create professional resumes and cover letters that land interviews.",
+        "price": "$15",
+        "period": "one-time",
+        "tag": "New",
+        "tagType": "new",
+        "btnType": "Buy Now",
+        "features": [
+            "100+ templates",
+            "ATS optimization",
+            "Export to PDF"
+        ],
+        "icon": "FileText",
+        "image": "https://store-images.s-microsoft.com/image/apps.63484.14242962753546805.652a3300-9547-4c30-8ad4-0418619494d0.8b601a83-7683-4512-b640-ddfb570c23bc?h=210"
+    },
+    {
+        "id": 6,
+        "name": "Social Media Content Kit",
+        "description": "Complete toolkit for creating engaging social media content across all platforms.",
+        "price": "$39",
+        "period": "mo",
+        "tag": "Best Seller",
+        "tagType": "best seller",
+        "btnType": "Buy Now",
+        "features": [
+            "5000+ assets",
+            "Scheduler included",
+            "Analytics dashboard"
+        ],
+        "icon": "Share2",
+        "image": "https://static.vecteezy.com/system/resources/previews/065/318/404/non_2x/social-media-engagement-icons-like-comment-follow-heart-vector.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Video Editing Suite",
+        "description": "Create professional-quality videos with powerful editing tools and effects.",
+        "price": "$59",
+        "period": "mo",
+        "tag": "Popular",
+        "tagType": "popular",
+        "btnType": "Buy Now",
+        "features": [
+            "4K video support",
+            "Advanced transitions",
+            "Fast rendering"
+        ],
+        "icon": "Video",
+        "image": "https://img.freepik.com/free-vector/video-editing-concept-illustration_114360-345.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Cloud Storage Secure",
+        "description": "Store, access, and share your files securely from anywhere in the world.",
+        "price": "$9",
+        "period": "mo",
+        "tag": "New",
+        "tagType": "new",
+        "btnType": "Buy Now",
+        "features": [
+            "1TB storage",
+            "End-to-end encryption",
+            "File sharing"
+        ],
+        "icon": "Cloud",
+        "image": "https://img.freepik.com/free-vector/cloud-storage-concept-illustration_114360-1235.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Website Builder Pro",
+        "description": "Build responsive websites easily with drag-and-drop functionality.",
+        "price": "$25",
+        "period": "mo",
+        "tag": "Best Seller",
+        "tagType": "best seller",
+        "btnType": "Buy Now",
+        "features": [
+            "Drag & drop builder",
+            "SEO optimized",
+            "Free hosting"
+        ],
+        "icon": "Globe",
+        "image": "https://img.freepik.com/free-vector/web-development-concept-illustration_114360-1367.jpg"
+    }
+]
