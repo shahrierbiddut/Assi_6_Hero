@@ -6,65 +6,61 @@ import { useEffect, useState } from 'react'
 import Navbar from './assets/Component/Navbar'
 import Banner from './assets/Component/Banner'
 import Activeuser from './assets/Component/Activeuser'
+import GetStarted from './assets/Component/getstarted'
 
 function App() {
 
-  // 🔹 Products state
   const [products, setProducts] = useState([])
-
-  // 🔹 Cart state
   const [cart, setCart] = useState([])
-
-  // 🔹 Toggle (products/cart)
   const [showCart, setShowCart] = useState(false)
+  const [modelPromise, setModelPromise] = useState(Promise.resolve([]))
 
-  // 🔹 Load JSON data
+  // Load JSON data
   useEffect(() => {
-    fetch('/products.json')
+    const promise = fetch('/products.json')
       .then(res => res.json())
-      .then(data => setProducts(data))
+      .then(data => {
+        setProducts(data)
+        return data
+      })
+    setModelPromise(promise)
   }, [])
 
-  // 🔹 Add to Cart
+  // Add to Cart
   const handleAddToCart = (product) => {
     const exists = cart.find(item => item.id === product.id)
-
     if (!exists) {
       setCart([...cart, product])
     }
   }
 
-  // 🔹 Remove from Cart
+  // Remove from Cart
   const handleRemove = (id) => {
     const updatedCart = cart.filter(item => item.id !== id)
     setCart(updatedCart)
   }
 
-  // 🔹 Clear Cart (Checkout)
+  // Checkout
   const handleCheckout = () => {
     setCart([])
   }
 
   return (
     <>
-      {/* Navbar */}
       <Navbar cartCount={cart.length} />
-
-      {/* Banner */}
       <Banner />
+
+      {/* 🔥 Models Section */}
+      <GetStarted modelPromise={modelPromise} />
 
       {/* Toggle Buttons */}
       <div style={{ textAlign: 'center', margin: '20px' }}>
-        <button onClick={() => setShowCart(false)}>
-          Products
-        </button>
-
+        <button onClick={() => setShowCart(false)}>Products</button>
         <button onClick={() => setShowCart(true)} style={{ marginLeft: '10px' }}>
           Cart
         </button>
       </div>
 
-      {/* Main Section */}
       <Activeuser
         products={products}
         cart={cart}
