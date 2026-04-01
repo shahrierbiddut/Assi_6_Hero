@@ -1,74 +1,84 @@
+import { useState } from 'react'
 import './App.css'
-import './index.css'
-
-import { useEffect, useState } from 'react'
-
-import Navbar from './assets/Component/Navbar'
-import Banner from './assets/Component/Banner'
 import Activeuser from './assets/Component/Activeuser'
-import GetStarted from './assets/Component/getstarted'
+import Banner from './assets/Component/Banner'
+import Cart from './assets/Component/Cart'
+import Footer from './assets/Component/Footer'
+import Getstarted from './assets/Component/Getstarted'
+import Models from './assets/Component/Models'
+import Navbar from './assets/Component/Navbar'
+import TransparentPricing from './assets/Component/TransparentPricing'
+import Workflow from './assets/Component/Workflow'
+
+const getModels = async () => {
+  const res = await fetch('/products.json')
+  return res.json()
+}
+
+const modelPromise = getModels()
 
 function App() {
 
-  const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([])
-  const [showCart, setShowCart] = useState(false)
-  const [modelPromise, setModelPromise] = useState(Promise.resolve([]))
-
-  // Load JSON data
-  useEffect(() => {
-    const promise = fetch('/products.json')
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data)
-        return data
-      })
-    setModelPromise(promise)
-  }, [])
-
-  // Add to Cart
-  const handleAddToCart = (product) => {
-    const exists = cart.find(item => item.id === product.id)
-    if (!exists) {
-      setCart([...cart, product])
-    }
-  }
-
-  // Remove from Cart
-  const handleRemove = (id) => {
-    const updatedCart = cart.filter(item => item.id !== id)
-    setCart(updatedCart)
-  }
-
-  // Checkout
-  const handleCheckout = () => {
-    setCart([])
-  }
+  const [activeTab, setActiveTab] = useState('Products')
+  const [carts, setCarts] = useState([])
 
   return (
     <>
-      <Navbar cartCount={cart.length} />
+      {/* 🔥 Cart count navbar এ পাঠাও */}
+      <Navbar carts={carts} />
+
       <Banner />
+      <Activeuser />
 
-      {/* 🔥 Models Section */}
-      <GetStarted modelPromise={modelPromise} />
-
-      {/* Toggle Buttons */}
-      <div style={{ textAlign: 'center', margin: '20px' }}>
-        <button onClick={() => setShowCart(false)}>Products</button>
-        <button onClick={() => setShowCart(true)} style={{ marginLeft: '10px' }}>
-          Cart
-        </button>
+      <div className='text-center pb-10'>
+        <h2 className='font-bold md:text-5xl text-4xl'>Premium Digital Tools</h2>
+        <p className='text-gray-700 pt-3'>
+          Choose from our curated collection of premium digital products <br />
+          designed to boost your productivity and creativity.
+        </p>
       </div>
 
-      <Activeuser
-        products={products}
-        cart={cart}
-        showCart={showCart}
-        handleAddToCart={handleAddToCart}
-        handleRemove={handleRemove}
-        handleCheckout={handleCheckout}
-      />
+      {/* Tabs */}
+      <div className="tabs tabs-box justify-center mb-10 bg-transparent">
+        <input
+          type="radio"
+          name="my_tabs_1"
+          className="tab rounded-full w-30"
+          aria-label="Products"
+          onClick={() => setActiveTab('Products')}
+          defaultChecked
+        />
+
+        <input
+          type="radio"
+          name="my_tabs_1"
+          className="tab rounded-full w-30"
+          aria-label="Carts"
+          onClick={() => setActiveTab('Carts')}
+        />
+      </div>
+
+      {/* 🔥 Products Section */}
+      {activeTab === 'Products' && (
+        <Models
+          modelPromise={modelPromise}
+          carts={carts}
+          setCarts={setCarts}
+        />
+      )}
+
+      {/* 🔥 Cart Section (FIXED) */}
+      {activeTab === 'Carts' && (
+        <Cart
+          carts={carts}
+          setCarts={setCarts}
+        />
+      )}
+
+      <Getstarted />
+      <TransparentPricing />
+      <Workflow />
+      <Footer />
     </>
   )
 }

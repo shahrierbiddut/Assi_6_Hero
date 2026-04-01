@@ -1,58 +1,63 @@
-import { Check } from "lucide-react";
-import { useEffect, useState } from "react";
+import React from 'react';
+import userIcon from '../../../assets/banner/user.png';
+import packageIcon from '../../../assets/banner/package.png';
+import rocketIcon from '../../../assets/banner/rocket.png';
 
-const GetStarted = ({ modelPromise }) => {
+const steps = [
+  {
+    id: '01',
+    title: 'Create Account',
+    description: 'Sign up for free in seconds. No credit card required to get started.',
+    icon: userIcon,
+  },
+  {
+    id: '02',
+    title: 'Choose Products',
+    description: 'Browse our catalog and select the tools that fit your needs.',
+    icon: packageIcon,
+  },
+  {
+    id: '03',
+    title: 'Start Creating',
+    description: 'Download and start using your premium tools immediately.',
+    icon: rocketIcon,
+  },
+];
 
-  const [models, setModels] = useState([]);
-
-  useEffect(() => {
-    modelPromise.then(data => setModels(data));
-  }, [modelPromise]);
-
+const GetStarted = () => {
   return (
-    <div className="max-w-[80%] mx-auto mb-20">
+    <div>
+      <h2 className="font-semibold md:text-5xl text-4xl text-center">
+        Get Started in 3 Steps
+      </h2>
+      <p className="text-gray-600 text-center pt-3 pb-10">
+        Start using premium digital tools in minutes, not hours.
+      </p>
 
-      <div className="text-center pb-10">
-        <h2 className="font-bold md:text-5xl text-4xl">
-          Premium Digital Tools
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        {models.map((model, index) => (
-          <div key={index} className="shadow-lg rounded-lg p-6">
-
-            <img
-              className="w-14 h-14 bg-gray-100 rounded-full p-1 mb-3"
-              src={model.image}
-              alt=""
-            />
-
-            <h3 className="text-2xl font-semibold">{model.name}</h3>
-            <p className="text-gray-600">{model.description}</p>
-
-            <div className="flex mb-2">
-              <h2 className="text-xl font-bold">{model.price}</h2>
-              <p className="text-gray-600">/{model.period}</p>
-            </div>
-
-            <div className="space-y-2 mb-3">
-              {model.features?.map((f, i) => (
-                <p key={i} className="flex gap-2 items-center">
-                  <Check size={18} className="text-green-500" />
-                  {f}
-                </p>
-              ))}
-            </div>
-
-            <button className="btn w-full bg-purple-600 text-white rounded-full">
-              {model.btnType || "Get Started"}
+      <div className="max-w-[80%] mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 mb-20">
+        {steps.map((step) => (
+          <div
+            key={step.id}
+            className="ring-1 ring-gray-100 shadow-2xl rounded-lg flex flex-col text-center p-4"
+          >
+            <button className="flex justify-end">
+              <span className="bg-[#9514FA] rounded-full py-1 px-2 flex justify-center text-white font-semibold">
+                {step.id}
+              </span>
             </button>
 
+            <button className="flex items-center justify-center my-4">
+              <img
+                className="max-w-14 px-3 py-3 rounded-full bg-[#a85ee53e]"
+                src={step.icon}
+                alt={step.title}
+              />
+            </button>
+
+            <h3 className="font-semibold text-3xl py-4">{step.title}</h3>
+            <p className="text-gray-600 pb-10">{step.description}</p>
           </div>
         ))}
-
       </div>
     </div>
   );
