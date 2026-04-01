@@ -6,24 +6,23 @@ const ModelCard = ({ model, carts, setCarts }) => {
 
   const handleBuyNow = () => {
     setBuyNow(true);
-    // Optional: add to carts if you want
     if (setCarts) {
-      setCarts([...carts, model]);
+      setCarts((prev) => [...prev, model]);
     }
   };
 
   // Dynamic tag color based on model.tag
   const tagColors = {
-    Popular: 'bg-amber-200',
-    New: 'bg-green-200',
-    'Best Seller': 'bg-purple-200',
+    Popular: 'bg-amber-100 text-amber-700',
+    New: 'bg-green-100 text-green-700',
+    'Best Seller': 'bg-purple-100 text-purple-700',
   };
 
   return (
-    <div className="ring-1 ring-gray-200 shadow-md rounded-lg px-3 py-6 flex flex-col justify-between h-full">
+    <div className="ring-1 ring-gray-200 shadow-sm rounded-2xl px-5 py-6 flex flex-col justify-between h-full bg-white transition-transform transition-shadow duration-200 hover:-translate-y-1 hover:shadow-lg">
       {/* Tag */}
       <div className="flex justify-end">
-        <span className={`px-3 rounded-full ${tagColors[model.tag] || 'bg-gray-200'}`}>
+        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${tagColors[model.tag] || 'bg-gray-100 text-gray-600'}`}>
           {model.tag}
         </span>
       </div>
@@ -39,18 +38,18 @@ const ModelCard = ({ model, carts, setCarts }) => {
 
       {/* Name & Description */}
       <div className="text-center">
-        <h3 className="text-2xl font-semibold pt-3">{model.name}</h3>
-        <p className="text-gray-600 pt-2">{model.description}</p>
+        <h3 className="text-2xl font-semibold pt-3 text-gray-900">{model.name}</h3>
+        <p className="text-gray-600 pt-2 text-sm leading-relaxed">{model.description}</p>
       </div>
 
       {/* Price */}
       <div className="flex justify-center gap-2 py-2 text-center">
-        <h2 className="text-xl font-bold">{model.price}</h2>
-        <p className="text-gray-600">/{model.period}</p>
+        <h2 className="text-xl font-bold text-gray-900">{model.price}</h2>
+        <p className="text-gray-500 text-sm self-center">/{model.period}</p>
       </div>
 
       {/* Features */}
-      <div className="text-gray-600 space-y-1">
+      <div className="text-gray-600 space-y-1 text-sm">
         {model.features.map((feature, idx) => (
           <p key={idx} className="flex gap-2 items-center">
             <Check size={18} className="text-green-500" />
@@ -62,7 +61,11 @@ const ModelCard = ({ model, carts, setCarts }) => {
       {/* Buy Now Button */}
       <button
         onClick={handleBuyNow}
-        className="btn btn-primary btn-block rounded-full text-white mt-5"
+        className={`btn btn-block rounded-full text-white mt-5 border-none py-2.5 text-sm transition hover:brightness-110 ${
+          isBuyNow
+            ? 'bg-green-500'
+            : 'bg-gradient-to-r from-[#4F39F6] to-[#9514FA]'
+        }`}
       >
         {isBuyNow ? 'Added to Cart' : 'Buy Now'}
       </button>

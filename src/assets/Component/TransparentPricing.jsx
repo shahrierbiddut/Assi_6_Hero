@@ -107,7 +107,7 @@ const Pricing = () => {
             </ul>
 
             <button
-              className={`w-full py-2 rounded-full font-semibold ${plan.buttonClass}`}
+              className={`w-full py-2.5 rounded-full font-semibold text-sm ${plan.buttonClass}`}
             >
               {plan.buttonText}
             </button>
