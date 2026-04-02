@@ -7,16 +7,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Logo & Description */}
           <div className="md:col-span-4 md:text-left text-center">
-            
-              <h2 className="text-3xl font-bold tracking-tighter text-white mb-4">
-                DigiTools
-              </h2>
+            <h2 className="text-3xl font-bold tracking-tighter text-white mb-4">
+              DigiTools
+            </h2>
             <p className="text-zinc-400 md:max-w-md">
-              Premium digital tools for creators, professionals, and businesses. Work smarter with our suite of powerful tools.
+              Premium digital tools for creators, professionals, and businesses.
+              Work smarter with our suite of powerful tools.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div className="md:col-span-2 md:text-left text-center">
             <h3 className="text-white font-semibold mb-6 text-lg">Product</h3>
             <ul className="space-y-4 text-zinc-400">
@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-4 text-zinc-400">
               <li>
                 <a href="#" className="hover:text-white transition">
-                  About 
+                  About
                 </a>
               </li>
               <li>
@@ -98,9 +98,9 @@ const Footer = () => {
           <div className="md:col-span-2 flex flex-col items-center">
             <h3 className="font-semibold text-lg text-white">Social Links</h3>
             <ul className="flex gap-4 py-4">
-                <FaFacebook className="text-gray-200 text-2xl" />
-                <FaLinkedin className="text-gray-200 text-2xl" />
-                <FaTwitter className="text-gray-200 text-2xl" />
+              <FaFacebook className="text-gray-200 text-2xl" />
+              <FaLinkedin className="text-gray-200 text-2xl" />
+              <FaTwitter className="text-gray-200 text-2xl" />
             </ul>
           </div>
         </div>
@@ -111,7 +111,7 @@ const Footer = () => {
 
           <div className="flex gap-6">
             <p>Privacy Policy</p>
-            <p>Terms of Service</p>                       
+            <p>Terms of Service</p>
             <p>Cookies</p>
           </div>
         </div>

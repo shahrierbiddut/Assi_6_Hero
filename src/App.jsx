@@ -11,7 +11,7 @@ import Navbar from './assets/Component/Navbar'
 import TransparentPricing from './assets/Component/TransparentPricing'
 import Workflow from './assets/Component/Workflow'
 
-// ✅ ADD THESE TWO LINES
+// ✅ ADD THESE
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -85,5 +85,4 @@ function App() {
     </>
   )
 }
-
 export default App

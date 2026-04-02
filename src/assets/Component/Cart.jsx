@@ -1,6 +1,6 @@
 import React from "react";
-import { toast, ToastContainer } from "react-toastify"; // ✅ import ToastContainer
-import "react-toastify/dist/ReactToastify.css"; // ✅ import styles
+import { toast, ToastContainer } from "react-toastify"; //
+import "react-toastify/dist/ReactToastify.css"; // 
 
 const Cart = ({ carts = [], setCarts, onBack }) => {
 
@@ -85,7 +85,7 @@ const Cart = ({ carts = [], setCarts, onBack }) => {
         </>
       )}
 
-      {/* ✅ ToastContainer must be in the component tree */}
+      {/* ✅ ToastContainer */}
       <ToastContainer />
     </section>
   );
