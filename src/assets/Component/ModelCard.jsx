@@ -1,17 +1,27 @@
 import { Check } from 'lucide-react';
 import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ModelCard = ({ model, carts, setCarts }) => {
+const ModelCard = ({ model, setCarts }) => {
   const [isBuyNow, setBuyNow] = useState(false);
 
   const handleBuyNow = () => {
-    setBuyNow(true);
-    if (setCarts) {
-      setCarts((prev) => [...prev, model]);
+    if (!isBuyNow) {
+      setBuyNow(true);
+
+      // Add item to cart
+      setCarts?.((prev) => [...prev, model]);
+
+      // Show toast (global toast, only 1 visible at a time)
+      toast.success(`${model.name} added to cart!`, {
+        toastId: 'global-add-cart', // ✅ single toast for all cards
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
-  // Dynamic tag color based on model.tag
   const tagColors = {
     Popular: 'bg-amber-100 text-amber-700',
     New: 'bg-green-100 text-green-700',
@@ -29,11 +39,7 @@ const ModelCard = ({ model, carts, setCarts }) => {
 
       {/* Image */}
       <div className="flex justify-center my-3">
-        <img
-          className="object-contain w-14 h-14 bg-gray-100 rounded-full p-1"
-          src={model.image}
-          alt={model.name}
-        />
+        <img className="object-contain w-14 h-14 bg-gray-100 rounded-full p-1" src={model.image} alt={model.name} />
       </div>
 
       {/* Name & Description */}
@@ -52,8 +58,7 @@ const ModelCard = ({ model, carts, setCarts }) => {
       <div className="text-gray-600 space-y-1 text-sm">
         {model.features.map((feature, idx) => (
           <p key={idx} className="flex gap-2 items-center">
-            <Check size={18} className="text-green-500" />
-            {feature}
+            <Check size={18} className="text-green-500" /> {feature}
           </p>
         ))}
       </div>
@@ -61,14 +66,12 @@ const ModelCard = ({ model, carts, setCarts }) => {
       {/* Buy Now Button */}
       <button
         onClick={handleBuyNow}
-        className={`btn btn-block rounded-full text-white mt-5 border-none py-2.5 text-sm transition hover:brightness-110 ${
-          isBuyNow
-            ? 'bg-green-500'
-            : 'bg-gradient-to-r from-[#4F39F6] to-[#9514FA]'
-        }`}
+        className={`btn btn-block rounded-full text-white mt-5 border-none py-2.5 text-sm transition hover:brightness-110 ${isBuyNow ? 'bg-green-500' : 'bg-gradient-to-r from-[#4F39F6] to-[#9514FA]'}`}
       >
         {isBuyNow ? 'Added to Cart' : 'Buy Now'}
       </button>
+
+      <ToastContainer />
     </div>
   );
 };

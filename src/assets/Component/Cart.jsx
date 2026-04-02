@@ -1,14 +1,27 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify"; // ✅ import ToastContainer
+import "react-toastify/dist/ReactToastify.css"; // ✅ import styles
 
 const Cart = ({ carts = [], setCarts, onBack }) => {
+
+  // ✅ Remove item with toast
   const handleRemove = (id) => {
     if (!setCarts) return;
     setCarts((prev) => prev.filter((item) => item.id !== id));
+    toast.info("Item removed 🗑️", {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
+  // ✅ Checkout with toast
   const handleCheckout = () => {
     if (!setCarts) return;
     setCarts([]);
+    toast.success("Checkout complete 🎉", {
+      position: "top-right",
+      autoClose: 2500,
+    });
   };
 
   return (
@@ -25,21 +38,30 @@ const Cart = ({ carts = [], setCarts, onBack }) => {
       </div>
 
       {!carts.length ? (
-        <div className="text-center text-gray-500 py-16">Your cart is empty.</div>
+        <div className="text-center text-gray-500 py-16">
+          Your cart is empty.
+        </div>
       ) : (
         <>
           <div className="grid grid-cols-1 gap-4">
             {carts.map((item) => (
-              <div key={item.id} className="ring-1 ring-gray-200 rounded-2xl p-5 bg-white flex items-center gap-4">
+              <div
+                key={item.id}
+                className="ring-1 ring-gray-200 rounded-2xl p-5 bg-white flex items-center gap-4"
+              >
                 <img
                   className="w-14 h-14 rounded-full bg-gray-100 p-2"
                   src={item.image}
                   alt={item.name}
                 />
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {item.name}
+                  </h3>
                 </div>
-                <p className="font-semibold text-gray-900">{item.price}</p>
+                <p className="font-semibold text-gray-900">
+                  {item.price}
+                </p>
                 <button
                   type="button"
                   onClick={() => handleRemove(item.id)}
@@ -62,6 +84,9 @@ const Cart = ({ carts = [], setCarts, onBack }) => {
           </div>
         </>
       )}
+
+      {/* ✅ ToastContainer must be in the component tree */}
+      <ToastContainer />
     </section>
   );
 };

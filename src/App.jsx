@@ -1,6 +1,6 @@
-
 import { useState } from 'react'
 import './App.css'
+
 import Activeuser from './assets/Component/Activeuser'
 import Banner from './assets/Component/Banner'
 import Cart from './assets/Component/Cart'
@@ -10,6 +10,10 @@ import Models from './assets/Component/Models'
 import Navbar from './assets/Component/Navbar'
 import TransparentPricing from './assets/Component/TransparentPricing'
 import Workflow from './assets/Component/Workflow'
+
+// ✅ ADD THESE TWO LINES
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const getModels = async () => {
   const res = await fetch('/products.json')
@@ -24,7 +28,7 @@ function App() {
 
   return (
     <>
-      {/* 🔥 Cart count navbar */}
+      {/*  Cart count navbar */}
       <Navbar carts={carts} onCartClick={() => setPage('cart')} onLogoClick={() => setPage('home')} />
 
       {page === 'home' && (
@@ -75,6 +79,9 @@ function App() {
           <Footer />
         </>
       )}
+
+      {/* ✅ ADD THIS */}
+      <ToastContainer position="top-right" autoClose={2000} />
     </>
   )
 }
