@@ -83,7 +83,9 @@ const Pricing = () => {
             )}
 
             <h2 className="text-xl font-semibold">{plan.name}</h2>
-            <p className={`text-sm mb-4 ${plan.bgClass.includes("text-white") ? "opacity-80" : "text-gray-500"}`}>
+            <p
+              className={`text-sm mb-4 ${plan.bgClass.includes("text-white") ? "opacity-80" : "text-gray-500"}`}
+            >
               {plan.description}
             </p>
 
@@ -92,13 +94,17 @@ const Pricing = () => {
               <span className="text-base font-normal">{plan.period}</span>
             </h1>
 
-            <ul className={`space-y-2 mb-6 ${plan.bgClass.includes("text-white") ? "text-gray-100" : "text-gray-600"}`}>
+            <ul
+              className={`space-y-2 mb-6 ${plan.bgClass.includes("text-white") ? "text-gray-100" : "text-gray-600"}`}
+            >
               {plan.features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <Check
                     size={18}
                     className={
-                      plan.bgClass.includes("text-white") ? "text-gray-100" : "text-green-500"
+                      plan.bgClass.includes("text-white")
+                        ? "text-gray-100"
+                        : "text-green-500"
                     }
                   />
                   {feature}

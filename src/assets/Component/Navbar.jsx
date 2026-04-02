@@ -7,7 +7,7 @@ const Navbar = ({ carts = [], onCartClick, onLogoClick }) => {
     <header className="bg-white sticky top-0 z-50">
       <div className="max-w-[80%] mx-auto flex items-center justify-between py-3">
 
-        {/* Left - Logo */}
+        {/* Left-Logo */}
         <div>
           <button
             type="button"
